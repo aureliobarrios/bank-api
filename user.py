@@ -35,5 +35,5 @@ class BankUser:
         """
         TODO: complete this function that 
         """
-        self.bank.withdraw(self.user_name, self.__password, amount)
-        return int(self.bank.get_balance(self.user_name, self.__password))
+
+        return(self.bank.withdraw(self.user_name, self.__password, amount))

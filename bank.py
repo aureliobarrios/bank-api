@@ -46,9 +46,7 @@ class Bank:
             user_name: the user name of the current user
             amount: the amount to change the current users balance by
         """
-        #print("current balance "+str(self.__bank_data[user_name]["balance"]))
         self.__bank_data[user_name]["balance"]+=amount
-        #print("current balance "+str(self.__bank_data[user_name]["balance"]))
 
     def find_user(self, user_name):
         """
@@ -118,6 +116,8 @@ class Bank:
         Make sure to only use __process_transaction to make changes to the users balance, not directly
         """
         ...
-        if (self.get_balance(user_name,password)>=0 )and self.__user_login(user_name,password):
-            self.__process_transaction(user_name,amount)
-        return int(self.__bank_data[user_name]["balance"])
+        if (self.get_balance(user_name,password) - amount >=0 )and self.__user_login(user_name,password):
+            self.__process_transaction(user_name,amount * -1)
+            return int(self.__bank_data[user_name]["balance"])
+        else:
+            return "Balance insufficient"
