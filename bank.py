@@ -33,7 +33,7 @@ class Bank:
         """
         if not self.find_user(user_name):
             return False
-        if password != self.__bank_data[user_name].__password:
+        if password != self.__bank_data[user_name]["password"]:
             return False
         return True
 
@@ -46,15 +46,9 @@ class Bank:
             user_name: the user name of the current user
             amount: the amount to change the current users balance by
         """
-        trans=input("For deposit, type 1; for withdraw, type 2")
-        if trans=="1":
-            print("current balance "+str(self.user_name.__balance))
-            self.user_name.__balance+=amount
-            print("current balance "+str(self.user_name.__balance))
-        if trans=="2":
-            print("current balance "+str(self.user_name.__balance))
-            self.user_name.__balance-=amount
-            print("current balance "+str(self.user_name.__balance))
+        #print("current balance "+str(self.__bank_data[user_name]["balance"]))
+        self.__bank_data[user_name]["balance"]+=amount
+        #print("current balance "+str(self.__bank_data[user_name]["balance"]))
 
     def find_user(self, user_name):
         """
@@ -98,7 +92,8 @@ class Bank:
             the current balance of the user
         """
         if self.__user_login(user_name,password):
-            print("current balance "+str(user_name.__balance))
+            #print("current balance "+str(self.__bank_data[user_name]["balance"]))
+            return int(self.__bank_data[user_name]["balance"])
         ...
     
     def deposit(self, user_name, password, amount):
@@ -110,8 +105,9 @@ class Bank:
         Make sure to only use __process_transaction to make changes to the users balance, not directly
         """
         ...
-        if self.get_balance(user_name,password)>0 and self.__user_login(user_name,password):
+        if (self.get_balance(user_name,password)>=0 )and self.__user_login(user_name,password):
             self.__process_transaction(user_name,amount)
+        return int(self.__bank_data[user_name]["balance"])
 
     def withdraw(self, user_name, password, amount):
         """
@@ -122,5 +118,6 @@ class Bank:
         Make sure to only use __process_transaction to make changes to the users balance, not directly
         """
         ...
-        if self.get_balance(user_name,password)>0 and self.__user_login(user_name,password):
+        if (self.get_balance(user_name,password)>=0 )and self.__user_login(user_name,password):
             self.__process_transaction(user_name,amount)
+        return int(self.__bank_data[user_name]["balance"])

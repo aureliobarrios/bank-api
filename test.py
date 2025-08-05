@@ -10,14 +10,14 @@ user_one = BankUser("USERNAME", "PASSWORD", bank_one)
 #user_one.__password
 
 #output should be zero
-user_one.check_balance()
+print(user_one.check_balance())
 
-user_one.deposit(150)
+print(user_one.deposit(150))
 
-user_one.withdraw(50)
+print(user_one.withdraw(50))
 
 #output should be 100
-user_one.check_balance()
+print(user_one.check_balance())
 
 #should not work since balance is only 50
-user_one.withdraw(2000)
+print(user_one.withdraw(2000))
