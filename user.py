@@ -15,7 +15,7 @@ class BankUser:
         """
         TODO: complete this function that adds the current user to the bank database
         """
-        bank.create_user(self.user_name, self.__password)
+        self.bank.create_user(self.user_name, self.__password)
     
     def check_balance(self):
         """
